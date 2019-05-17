@@ -16,21 +16,21 @@ function build() {
   version="$3"
   python_version="$4"
 
-	rm -rf "temp"
-	mkdir -p "temp"
+  rm -rf "temp"
+  mkdir -p "temp"
 
-	docker run -v $(pwd)/"temp/":/outputs \
-			   -it lambci/lambda:build-python$python_version \
-			   pip install "$package"=="$version" -t /outputs/
-	(cd "temp" && tar -czvf "$package-$version.tgz" "$egg")
-	mv "temp/$package-$version.tgz" ./
-	rm -rf "temp"
+  docker run -v $(pwd)/"temp/":/outputs \
+  		   lambci/lambda:build-python$python_version \
+  		   pip install "$package"=="$version" -t /outputs/
+  (cd "temp" && tar -czvf "$package-$version.tgz" "$egg")
+  mv "temp/$package-$version.tgz" ./
+  rm -rf "temp"
 }
 
 function build_and_upload() {
-	package="$1"
-	egg="$2"
-	version="$3"
+  package="$1"
+  egg="$2"
+  version="$3"
   python_version="$4"
   folder="$5"
 

@@ -5,8 +5,8 @@ set -e
 function upload() {
   filename=$1
   folder=$2
-	echo "uploading $folder/$filename..."
-	clokta-load bigdata aws s3 cp "$filename" "s3://washpost-perso-1-prod/lambda-compiled-binaries/$folder/"
+  echo "uploading $folder/$filename..."
+  clokta-load bigdata aws s3 cp "$filename" "s3://washpost-perso-1-prod/lambda-compiled-binaries/$folder/"
 }
 
 function build() {
@@ -34,14 +34,18 @@ function build_and_upload() {
   python_version="$4"
   folder="$5"
 
-  build $package $egg $version $python_version
+  build "$package" "$egg" "$version" "$python_version"
   upload "$package-$version.tgz" "$folder"
 }
 
+build_and_upload lxml lxml 4.3.3 3.6 py36
+build_and_upload lxml psycopg2 2.8.2 3.6 py36
 build_and_upload scikit-learn sklearn 0.21.1 3.6 py36
 build_and_upload numpy numpy 1.16.3 3.6 py36
 build_and_upload scipy scipy 1.2.1 3.6 py36
 
+build_and_upload lxml lxml 4.3.3 3.7 py37
+build_and_upload lxml psycopg2 2.8.2 3.7 py37
 build_and_upload scikit-learn sklearn 0.21.1 3.7 py37
 build_and_upload numpy numpy 1.16.3 3.7 py37
 build_and_upload scipy scipy 1.2.1 3.7 py37

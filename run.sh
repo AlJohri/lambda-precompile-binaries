@@ -42,12 +42,8 @@ function build_and_upload() {
 
 build_and_upload lxml lxml 4.3.3 3.6 py36
 build_and_upload psycopg2 psycopg2 2.8.2 3.6 py36 "yum install -y postgresql-devel"
-build_and_upload scikit-learn sklearn 0.21.1 3.6 py36
 build_and_upload numpy numpy 1.16.3 3.6 py36
-build_and_upload scipy scipy 1.2.1 3.6 py36
 
 build_and_upload lxml lxml 4.3.3 3.7 py37
 build_and_upload psycopg2 psycopg2 2.8.2 3.7 py37 "yum install -y postgresql-devel"
-build_and_upload scikit-learn sklearn 0.21.1 3.7 py37
 build_and_upload numpy numpy 1.16.3 3.7 py37
-build_and_upload scipy scipy 1.2.1 3.7 py37

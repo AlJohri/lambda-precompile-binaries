@@ -11,9 +11,9 @@ function upload() {
 
 function build() {
 
-	package="$1"
-	egg="$2"
-	version="$3"
+  package="$1"
+  egg="$2"
+  version="$3"
   python_version="$4"
 
 	rm -rf "temp"
